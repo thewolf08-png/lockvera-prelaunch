@@ -1,0 +1,332 @@
+/* ========================================
+   LockVera Pre-Launch — Design System
+   ======================================== */
+
+:root {
+    /* Primary Gradient */
+    --color-cyan: #4FD1C5;
+    --color-blue: #667EEA;
+    --color-violet: #9F7AEA;
+
+    /* Backgrounds */
+    --color-bg-primary: #0A0A0F;
+    --color-bg-secondary: #0D0D14;
+
+    /* Text */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: rgba(255, 255, 255, 0.5);
+    --color-text-muted: rgba(255, 255, 255, 0.3);
+
+    /* Borders */
+    --color-border: rgba(255, 255, 255, 0.08);
+
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 48px;
+    --space-xl: 64px;
+    --space-2xl: 96px;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+
+    /* Animation */
+    --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-medium: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-regular);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   Grain Texture Overlay
+   ======================================== */
+
+.grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeInUp 1.2s var(--transition-slow) forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   Logo
+   ======================================== */
+
+.logo-container {
+    position: relative;
+    margin-bottom: var(--space-md);
+}
+
+.logo-symbol {
+    width: auto;
+    height: 140px;
+    position: relative;
+    z-index: 2;
+    object-fit: contain;
+    /* Optische Zentrierung für asymmetrisches Logo */
+    transform: translateX(-5px);
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle,
+            rgba(102, 126, 234, 0.15) 0%,
+            rgba(159, 122, 234, 0.08) 40%,
+            transparent 70%);
+    filter: blur(40px);
+    z-index: 1;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* ========================================
+   Wordmark
+   ======================================== */
+
+.wordmark {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+}
+
+/* ========================================
+   Divider
+   ======================================== */
+
+.divider {
+    display: none;
+}
+
+/* ========================================
+   Claim
+   ======================================== */
+
+.claim {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    white-space: nowrap;
+    margin-bottom: var(--space-2xl);
+}
+
+/* ========================================
+   Status Badge
+   ======================================== */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-cyan);
+    box-shadow: 0 0 10px var(--color-cyan);
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.status-text {
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.footer {
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+}
+
+.footer-divider {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+    margin: 0 8px;
+}
+
+.footer-link {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 640px) {
+    .hero {
+        padding: var(--space-md);
+    }
+
+    .logo-symbol {
+        width: 80px;
+        height: 96px;
+    }
+
+    .logo-glow {
+        width: 160px;
+        height: 160px;
+    }
+
+    .divider {
+        width: 40px;
+    }
+
+    .claim {
+        max-width: 280px;
+    }
+}
+
+/* ========================================
+   Subtle Background Gradient
+   ======================================== */
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% -20%,
+            rgba(102, 126, 234, 0.08) 0%,
+            transparent 50%),
+        radial-gradient(ellipse 60% 40% at 50% 120%,
+            rgba(159, 122, 234, 0.05) 0%,
+            transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}

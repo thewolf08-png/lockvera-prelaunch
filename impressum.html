@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Impressum – LockVera</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .legal-page {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            min-height: 100vh;
+        }
+
+        .legal-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: var(--space-xl);
+            transition: color 0.2s ease;
+        }
+
+        .legal-back:hover {
+            color: var(--color-text-secondary);
+        }
+
+        .legal-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-primary);
+        }
+
+        .legal-section {
+            margin-bottom: var(--space-lg);
+        }
+
+        .legal-section h2 {
+            font-size: 0.875rem;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-sm);
+        }
+
+        .legal-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        .legal-placeholder {
+            padding: var(--space-md);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <main class="legal-page">
+        <a href="index.html" class="legal-back">
+            ← Zurück
+        </a>
+
+        <h1 class="legal-title">Impressum</h1>
+
+        <div class="legal-section">
+            <h2>Angaben gemäß § 5 DDG</h2>
+            <p>
+                David Wolf<br><br>
+                Kronenstraße 42<br>
+                Haus A, 4. OG<br>
+                70173 Stuttgart<br>
+                Deutschland
+            </p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Kontakt</h2>
+            <p>
+                E-Mail: <a href="mailto:founder@lockvera.com" class="footer-link">founder@lockvera.com</a>
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>

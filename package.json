@@ -1,0 +1,14 @@
+{
+    "name": "lockvera-prelaunch",
+    "version": "1.0.0",
+    "description": "LockVera Pre-Launch Website",
+    "private": true,
+    "scripts": {
+        "dev": "npx serve .",
+        "build": "echo 'Static site - no build required'",
+        "start": "npx serve ."
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
