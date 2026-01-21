@@ -290,22 +290,53 @@ body {
         padding: var(--space-md);
     }
 
+    .logo-container {
+        margin-bottom: var(--space-sm);
+    }
+
     .logo-symbol {
-        width: 80px;
-        height: 96px;
+        height: 100px;
+        transform: translateX(-3px);
     }
 
     .logo-glow {
-        width: 160px;
-        height: 160px;
+        width: 140px;
+        height: 140px;
     }
 
-    .divider {
-        width: 40px;
+    .wordmark {
+        font-size: 2rem;
+        margin-bottom: var(--space-sm);
     }
 
     .claim {
-        max-width: 280px;
+        white-space: normal;
+        text-align: center;
+        font-size: 0.9375rem;
+        padding: 0 var(--space-sm);
+        margin-bottom: var(--space-lg);
+    }
+
+    .status-badge {
+        padding: 8px 16px;
+        gap: 8px;
+    }
+
+    .status-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+    }
+
+    .footer {
+        padding: var(--space-sm) var(--space-md);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .footer-text,
+    .footer-link {
+        font-size: 0.6875rem;
     }
 }
 
