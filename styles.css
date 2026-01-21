@@ -103,20 +103,55 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    animation: fadeInUp 1.2s var(--transition-slow) forwards;
-    opacity: 0;
 }
 
-@keyframes fadeInUp {
-    from {
+/* High-End Staggered Entrance Animation */
+@keyframes revealUp {
+    0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px) scale(0.96);
+        filter: blur(10px);
     }
 
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+        filter: blur(0);
     }
+}
+
+@keyframes revealFade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.logo-container {
+    opacity: 0;
+    animation: revealUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+.wordmark {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.claim {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.75s;
+}
+
+.status-badge {
+    opacity: 0;
+    animation: revealFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 1.1s;
 }
 
 /* ========================================
