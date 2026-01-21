@@ -95,6 +95,7 @@ body {
     justify-content: center;
     padding: var(--space-lg);
     position: relative;
+    min-height: calc(100vh - 60px);
 }
 
 .hero-content {
@@ -252,6 +253,11 @@ body {
    ======================================== */
 
 .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
     padding: var(--space-md) var(--space-lg);
     text-align: center;
     border-top: 1px solid var(--color-border);
