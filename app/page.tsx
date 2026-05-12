@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "LockVera",
+  description: "LockVera – Power needs structure. Coming 2026.",
+  robots: { index: false, follow: false },
+};
 
 export default function Home() {
   return (
@@ -17,6 +24,10 @@ export default function Home() {
           <div className="divider" />
 
           <p className="claim">Power needs structure — we provide both.</p>
+
+          <Link href="/blog" className="blog-entry-link">
+            Zum LockVera Blog →
+          </Link>
 
           <div className="status-badge">
             <span className="status-dot" />
