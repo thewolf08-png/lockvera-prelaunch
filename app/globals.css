@@ -1,0 +1,556 @@
+/* ========================================
+   LockVera Pre-Launch — Design System
+   ======================================== */
+
+:root {
+    /* Primary Gradient */
+    --color-cyan: #4FD1C5;
+    --color-blue: #667EEA;
+    --color-violet: #9F7AEA;
+
+    /* Backgrounds */
+    --color-bg-primary: #030304;
+    --color-bg-secondary: #070709;
+
+    /* Text */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: rgba(255, 255, 255, 0.5);
+    --color-text-muted: rgba(255, 255, 255, 0.3);
+
+    /* Borders */
+    --color-border: rgba(255, 255, 255, 0.08);
+
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 48px;
+    --space-xl: 64px;
+    --space-2xl: 96px;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+
+    /* Animation */
+    --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-medium: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-regular);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   Grain Texture Overlay
+   ======================================== */
+
+.grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    position: relative;
+    min-height: calc(100vh - 60px);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* High-End Staggered Entrance Animation */
+@keyframes revealUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes revealFade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.logo-container {
+    opacity: 0;
+    animation: revealUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+.wordmark {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.claim {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.75s;
+}
+
+.status-badge {
+    opacity: 0;
+    animation: revealFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 1.1s;
+}
+
+/* ========================================
+   Logo
+   ======================================== */
+
+.logo-container {
+    position: relative;
+    margin-bottom: var(--space-md);
+}
+
+.logo-symbol {
+    width: auto;
+    height: 140px;
+    position: relative;
+    z-index: 2;
+    object-fit: contain;
+    /* Optische Zentrierung für asymmetrisches Logo */
+    transform: translateX(-5px);
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle,
+            rgba(102, 126, 234, 0.15) 0%,
+            rgba(159, 122, 234, 0.08) 40%,
+            transparent 70%);
+    filter: blur(40px);
+    z-index: 1;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* ========================================
+   Wordmark
+   ======================================== */
+
+.wordmark {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+}
+
+/* ========================================
+   Divider
+   ======================================== */
+
+.divider {
+    display: none;
+}
+
+/* ========================================
+   Claim
+   ======================================== */
+
+.claim {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    white-space: nowrap;
+    margin-bottom: var(--space-2xl);
+}
+
+/* ========================================
+   Status Badge
+   ======================================== */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-cyan);
+    box-shadow: 0 0 10px var(--color-cyan);
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.status-text {
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+}
+
+.footer-divider {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+    margin: 0 8px;
+}
+
+.footer-link {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 640px) {
+    .hero {
+        padding: var(--space-md);
+    }
+
+    .logo-container {
+        margin-bottom: var(--space-sm);
+    }
+
+    .logo-symbol {
+        height: 100px;
+        transform: translateX(-3px);
+    }
+
+    .logo-glow {
+        width: 140px;
+        height: 140px;
+    }
+
+    .wordmark {
+        font-size: 2rem;
+        margin-bottom: var(--space-sm);
+    }
+
+    .claim {
+        white-space: normal;
+        text-align: center;
+        font-size: 0.9375rem;
+        padding: 0 var(--space-sm);
+        margin-bottom: var(--space-lg);
+    }
+
+    .status-badge {
+        padding: 8px 16px;
+        gap: 8px;
+    }
+
+    .status-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+    }
+
+    .footer {
+        padding: var(--space-sm) var(--space-md);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .footer-text,
+    .footer-link {
+        font-size: 0.6875rem;
+    }
+}
+
+/* ========================================
+   Subtle Background Gradient
+   ======================================== */
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% -20%,
+            rgba(102, 126, 234, 0.08) 0%,
+            transparent 50%),
+        radial-gradient(ellipse 60% 40% at 50% 120%,
+            rgba(159, 122, 234, 0.05) 0%,
+            transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* ========================================
+   Legal Pages
+   ======================================== */
+
+/* Impressum */
+.legal-page.legal-page--impressum {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            min-height: 100vh;
+        }
+
+.legal-page--impressum .legal-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: var(--space-xl);
+            transition: color 0.2s ease;
+        }
+
+.legal-page--impressum .legal-back:hover {
+            color: var(--color-text-secondary);
+        }
+
+.legal-page--impressum .legal-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-primary);
+        }
+
+.legal-page--impressum .legal-section {
+            margin-bottom: var(--space-lg);
+        }
+
+.legal-page--impressum .legal-section h2 {
+            font-size: 0.875rem;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-sm);
+        }
+
+.legal-page--impressum .legal-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+.legal-page--impressum .legal-placeholder {
+            padding: var(--space-md);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+/* Datenschutz */
+.legal-page.legal-page--datenschutz {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            min-height: 100vh;
+        }
+
+.legal-page--datenschutz .legal-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: var(--space-xl);
+            transition: color 0.2s ease;
+        }
+
+.legal-page--datenschutz .legal-back:hover {
+            color: var(--color-text-secondary);
+        }
+
+.legal-page--datenschutz .legal-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+
+.legal-page--datenschutz .legal-updated {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-xl);
+        }
+
+.legal-page--datenschutz .legal-section {
+            margin-bottom: var(--space-lg);
+        }
+
+.legal-page--datenschutz .legal-section h2 {
+            font-size: 1.125rem;
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+.legal-page--datenschutz .legal-section h3 {
+            font-size: 1rem;
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-xs);
+        }
+
+.legal-page--datenschutz .legal-section p,
+.legal-page--datenschutz .legal-section li {
+            font-size: 0.9375rem;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+
+.legal-page--datenschutz .legal-section ul {
+            margin-left: var(--space-md);
+            margin-top: var(--space-xs);
+        }
+
+.legal-page--datenschutz .legal-section li {
+            margin-bottom: var(--space-xs);
+        }
+
+.legal-page--datenschutz .legal-section a {
+            color: var(--color-cyan);
+            text-decoration: none;
+        }
+
+.legal-page--datenschutz .legal-section a:hover {
+            text-decoration: underline;
+        }
+
+.legal-page--datenschutz .legal-basis {
+            margin-top: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 2px solid var(--color-border);
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
