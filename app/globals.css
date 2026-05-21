@@ -1534,8 +1534,17 @@ body::before {
   }
 
   .blog-page .article-author {
-    align-items: flex-start;
+    align-items: center;
     font-size: 12px;
+  }
+
+  .blog-page .article-author__avatar {
+    flex: 0 0 32px;
+  }
+
+  .blog-page .article-author span:last-child {
+    min-width: 0;
+    line-height: 1.35;
   }
 
   .blog-page .article-body h2 {
