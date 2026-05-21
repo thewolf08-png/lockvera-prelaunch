@@ -138,6 +138,7 @@ export function InsightsOverview({ posts, topics, initialQuery, initialTopicSlug
         activeTopicSlug={activeTopicSlug}
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
+        onSearchSubmit={() => updateUrl(searchQuery, activeTopicSlug)}
         onTopicChange={handleTopicChange}
         getTopicHref={(topicSlug) => createOverviewHref(searchQuery, topicSlug)}
       />

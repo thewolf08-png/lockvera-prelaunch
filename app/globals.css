@@ -747,6 +747,10 @@ body::before {
   align-self: start;
 }
 
+.blog-page .sidebar__panel-title {
+  display: none;
+}
+
 .blog-page .sidebar__eyebrow {
   font-size: 13px;
   font-weight: var(--weight-regular);
@@ -773,9 +777,17 @@ body::before {
   max-width: 28ch;
 }
 
+.blog-page .sidebar__lede-mobile {
+  display: none;
+}
+
 .blog-page .sidebar__search {
   position: relative;
   margin-bottom: var(--space-5);
+}
+
+.blog-page .sidebar__search-submit {
+  display: none;
 }
 
 .blog-page .sidebar__search input {
@@ -1617,9 +1629,179 @@ body::before {
   }
 }
 
+@media (max-width: 900px) {
+  .blog-page .main {
+    padding-top: 0;
+  }
+
+  .blog-page .layout {
+    display: block;
+  }
+
+  .blog-page .sidebar {
+    width: calc(100% + (var(--page-margin-desktop) * 2));
+    max-width: none;
+    margin: 0 calc(var(--page-margin-desktop) * -1) var(--space-7);
+  }
+
+  .blog-page .sidebar__hero,
+  .blog-page .sidebar__search-panel,
+  .blog-page .sidebar__category-panel {
+    padding-left: var(--page-margin-desktop);
+    padding-right: var(--page-margin-desktop);
+  }
+
+  .blog-page .sidebar__hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-top: 72px;
+    padding-bottom: var(--space-8);
+    background:
+      radial-gradient(circle at 18% 22%, rgba(89, 197, 201, 0.14), transparent 28%),
+      radial-gradient(circle at 82% 12%, rgba(122, 77, 219, 0.12), transparent 30%),
+      linear-gradient(180deg, #FFFFFF 0%, #FBFCFF 100%);
+    border-bottom: 1px solid rgba(200, 211, 223, 0.55);
+  }
+
+  .blog-page .sidebar__hero::before {
+    content: "";
+    position: absolute;
+    inset: 18% -20% auto 24%;
+    z-index: -1;
+    height: 220px;
+    border-radius: 999px;
+    background: rgba(122, 77, 219, 0.06);
+    transform: rotate(-12deg);
+  }
+
+  .blog-page .sidebar__eyebrow {
+    color: var(--color-brand-accent);
+    font-size: 13px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+  }
+
+  .blog-page .sidebar__title {
+    max-width: 9ch;
+    margin-bottom: var(--space-4);
+    font-size: 58px;
+    line-height: 0.95;
+  }
+
+  .blog-page .sidebar__lede {
+    max-width: 30ch;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .blog-page .sidebar__lede-desktop {
+    display: none;
+  }
+
+  .blog-page .sidebar__lede-mobile {
+    display: inline;
+  }
+
+  .blog-page .sidebar__search-panel {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+    background: linear-gradient(180deg, rgba(122, 77, 219, 0.08), rgba(122, 77, 219, 0.035));
+  }
+
+  .blog-page .sidebar__panel-title {
+    display: block;
+    margin: 0 0 var(--space-3);
+    color: var(--color-text-primary);
+    font-size: 28px;
+    line-height: 1.08;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0;
+  }
+
+  .blog-page .sidebar__search {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    margin-bottom: 0;
+  }
+
+  .blog-page .sidebar__search input {
+    height: 52px;
+    padding-left: 52px;
+    border-radius: var(--radius-full);
+    border-color: rgba(200, 211, 223, 0.9);
+    background: #FFFFFF;
+    font-size: 16px;
+    box-shadow: 0 1px 0 rgba(89, 107, 125, 0.04);
+  }
+
+  .blog-page .sidebar__search-icon {
+    top: 26px;
+    left: 20px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .blog-page .sidebar__search-submit {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    min-width: 116px;
+    height: 46px;
+    padding: 0 var(--space-4);
+    border: 0;
+    border-radius: var(--radius-full);
+    background: var(--color-brand-primary);
+    color: #FFFFFF;
+    font: inherit;
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    cursor: pointer;
+    transition: background 120ms ease, transform 120ms ease;
+  }
+
+  .blog-page .sidebar__search-submit:hover {
+    background: var(--color-brand-primary-hover);
+  }
+
+  .blog-page .sidebar__search-submit:active {
+    transform: translateY(1px);
+  }
+
+  .blog-page .sidebar__mobile-search-state {
+    margin-top: var(--space-4);
+  }
+
+  .blog-page .sidebar__divider {
+    display: none;
+  }
+
+  .blog-page .sidebar__category-panel {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-5);
+    background: linear-gradient(180deg, rgba(122, 77, 219, 0.035), rgba(122, 77, 219, 0.02));
+  }
+
+  .blog-page .sidebar__section-label {
+    display: block;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+    font-size: 28px;
+    line-height: 1.08;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+}
+
 @media (max-width: 640px) {
 .blog-page .main {
-    padding-top: var(--space-7);
+    padding-top: 0;
     padding-bottom: var(--space-7);
   }
 
@@ -1662,9 +1844,9 @@ body::before {
 
 @media (max-width: 900px) {
 .blog-page .sidebar {
+    width: calc(100% + (var(--page-margin-desktop) * 2));
     max-width: none;
-    width: 100%;
-    margin-bottom: var(--space-5);
+    margin: 0 calc(var(--page-margin-desktop) * -1) var(--space-7);
   }
 
 .blog-page .sidebar__eyebrow {
@@ -1678,12 +1860,10 @@ body::before {
 
 .blog-page .sidebar__lede {
     max-width: 38ch;
-    margin-bottom: var(--space-5);
+    margin-bottom: 0;
   }
 
-.blog-page .sidebar__search,
-.blog-page .sidebar__divider,
-.blog-page .sidebar__section-label {
+.blog-page .sidebar__divider {
     display: none;
   }
 
@@ -1695,7 +1875,7 @@ body::before {
     margin-left: calc(var(--page-margin-desktop) * -1);
     margin-right: calc(var(--page-margin-desktop) * -1);
     padding: 15px var(--page-margin-desktop) 13px;
-    border-top: 1px solid rgba(200, 211, 223, 0.55);
+    border-top: 0;
     border-bottom: 0;
     overflow-x: auto;
     overflow-y: hidden;
@@ -1732,7 +1912,7 @@ body::before {
 
 @media (max-width: 640px) {
 .blog-page .sidebar {
-    margin-bottom: var(--space-4);
+    margin: 0 calc(var(--page-margin-desktop) * -1) var(--space-7);
   }
 
 .blog-page .sidebar__title {
@@ -1741,7 +1921,7 @@ body::before {
   }
 
 .blog-page .sidebar__lede {
-    margin-bottom: var(--space-4);
+    margin-bottom: 0;
   }
 
 .blog-page .filters {
