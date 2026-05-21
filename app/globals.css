@@ -897,6 +897,17 @@ body::before {
   transition: opacity 160ms ease;
 }
 
+.blog-page .card__cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.blog-page .card__cover--image {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
+}
+
 .blog-page .card__cover-link:hover .card__cover::after,
 .blog-page .card__cover-link:focus-visible .card__cover::after {
   opacity: 0.04;
@@ -1373,13 +1384,12 @@ body::before {
 
 .blog-page .article-hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(44px, 7vw, 76px);
-  line-height: 1;
+  font-size: clamp(44px, 6vw, 68px);
+  line-height: 1.06;
   letter-spacing: -0.025em;
   color: var(--color-text-primary);
   margin: 0;
   text-wrap: balance;
-  overflow-wrap: anywhere;
 }
 
 .blog-page .article-hero p {
@@ -1430,6 +1440,14 @@ body::before {
   margin: 0 0 var(--space-4);
 }
 
+.blog-page .article-body p + h2,
+.blog-page .article-body ul + h2,
+.blog-page .article-body ol + h2,
+.blog-page .article-body blockquote + h2,
+.blog-page .article-body .article-inline-visual + h2 {
+  margin-top: 48px;
+}
+
 .blog-page .article-body p {
   color: var(--color-text-secondary);
   font-size: 16px;
@@ -1477,55 +1495,61 @@ body::before {
   color: var(--color-brand-primary);
 }
 
-
-
 @media (max-width: 640px) {
-.blog-page .article-main {
+  .blog-page .article-main {
     padding: var(--space-7) var(--space-4);
   }
 
-.blog-page .article-back {
+  .blog-page .article-back {
     margin-bottom: var(--space-5);
     font-size: 13px;
   }
 
-.blog-page .article-hero {
+  .blog-page .article-hero {
     gap: var(--space-3);
     margin-bottom: var(--space-6);
   }
 
-.blog-page .article-hero h1 {
+  .blog-page .article-hero h1 {
     font-size: clamp(34px, 10vw, 42px);
     line-height: 1.06;
     letter-spacing: -0.018em;
   }
 
-.blog-page .article-hero p {
+  .blog-page .article-hero p {
     font-size: 15px;
     line-height: 1.62;
   }
 
-.blog-page .article-author {
+  .blog-page .article-author {
     align-items: flex-start;
     font-size: 12px;
   }
 
-.blog-page .article-body h2 {
+  .blog-page .article-body h2 {
     font-size: 21px;
     line-height: 1.25;
   }
 
-.blog-page .article-body p,
-.blog-page .article-body li {
+  .blog-page .article-body p + h2,
+  .blog-page .article-body ul + h2,
+  .blog-page .article-body ol + h2,
+  .blog-page .article-body blockquote + h2,
+  .blog-page .article-body .article-inline-visual + h2 {
+    margin-top: 32px;
+  }
+
+  .blog-page .article-body p,
+  .blog-page .article-body li {
     font-size: 15px;
     line-height: 1.72;
   }
 
-.blog-page .article-inline-visual {
+  .blog-page .article-inline-visual {
     margin-top: var(--space-6);
   }
 
-.blog-page .article-end-cta {
+  .blog-page .article-end-cta {
     margin-top: var(--space-7);
     padding-top: var(--space-5);
   }

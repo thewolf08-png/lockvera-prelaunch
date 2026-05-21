@@ -5,6 +5,10 @@ type CoverGraphicProps = {
 };
 
 export function CoverGraphic({ type }: CoverGraphicProps) {
+  if (type === "blank") {
+    return <div className="card__cover cover--blank" />;
+  }
+
   if (type === "trail") {
     return (
       <div className="card__cover cover--trail">

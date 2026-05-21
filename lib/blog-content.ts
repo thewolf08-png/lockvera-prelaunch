@@ -15,6 +15,7 @@ type Frontmatter = {
   publishedAt: string;
   readingTime: string;
   coverType: BlogPost["coverType"];
+  coverImage?: string;
   ctaText: string;
   published: boolean;
 };
@@ -35,6 +36,18 @@ function getStringField(frontmatter: RawFrontmatter, field: keyof Frontmatter, f
 
   if (typeof value !== "string" || !value.trim()) {
     throw new Error(`Invalid or missing frontmatter field "${field}" in ${fileName}`);
+  }
+
+  return value.trim();
+}
+
+function getOptionalStringField(frontmatter: RawFrontmatter, field: keyof Frontmatter, fileName: string) {
+  const value = frontmatter[field];
+
+  if (value === undefined) return undefined;
+
+  if (typeof value !== "string" || !value.trim()) {
+    throw new Error(`Invalid frontmatter field "${field}" in ${fileName}`);
   }
 
   return value.trim();
@@ -77,6 +90,7 @@ function validateFrontmatter(rawFrontmatter: RawFrontmatter, fileName: string): 
   const publishedAt = validateDate(getStringField(rawFrontmatter, "publishedAt", fileName), fileName);
   const readingTime = getStringField(rawFrontmatter, "readingTime", fileName);
   const coverType = getStringField(rawFrontmatter, "coverType", fileName);
+  const coverImage = getOptionalStringField(rawFrontmatter, "coverImage", fileName);
   const ctaText = getStringField(rawFrontmatter, "ctaText", fileName);
   const published = getBooleanField(rawFrontmatter, "published", fileName);
 
@@ -92,6 +106,10 @@ function validateFrontmatter(rawFrontmatter: RawFrontmatter, fileName: string): 
     throw new Error(`Invalid coverType "${coverType}" in ${fileName}`);
   }
 
+  if (coverImage && !coverImage.startsWith("/")) {
+    throw new Error(`Invalid coverImage "${coverImage}" in ${fileName}; expected an absolute public path`);
+  }
+
   return {
     title,
     slug,
@@ -100,6 +118,7 @@ function validateFrontmatter(rawFrontmatter: RawFrontmatter, fileName: string): 
     publishedAt,
     readingTime,
     coverType,
+    coverImage,
     ctaText,
     published,
   };
@@ -122,6 +141,7 @@ function readPost(fileName: string): BlogPostDetail & { published: boolean } {
     publishedAt: frontmatter.publishedAt,
     readingTime: frontmatter.readingTime,
     coverType: frontmatter.coverType,
+    coverImage: frontmatter.coverImage,
     ctaText: frontmatter.ctaText,
     content,
     published: frontmatter.published,
@@ -149,5 +169,11 @@ export function getAllPostDetails() {
 }
 
 export function getPostBySlug(slug: string) {
-  return getAllPostDetails().find((post) => post.slug === slug);
+  const includeDrafts = process.env.NODE_ENV !== "production";
+
+  const posts = includeDrafts
+    ? sortByPublishedAtDesc(getContentFiles().map(readPost))
+    : getAllPostDetails();
+
+  return posts.find((post) => post.slug === slug);
 }

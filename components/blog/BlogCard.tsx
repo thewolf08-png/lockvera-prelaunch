@@ -11,7 +11,13 @@ export function BlogCard({ post }: BlogCardProps) {
   return (
     <article className="card">
       <a className="card__cover-link" href={href} aria-label={`Beitrag öffnen: ${post.title}`}>
-        <CoverGraphic type={post.coverType} />
+        {post.coverImage ? (
+          <div className="card__cover card__cover--image">
+            <img className="card__cover-image" src={post.coverImage} alt="" />
+          </div>
+        ) : (
+          <CoverGraphic type={post.coverType} />
+        )}
       </a>
       <span className="card__topic">{post.topic}</span>
       <h3 className="card__title">

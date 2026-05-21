@@ -1,6 +1,6 @@
 import type { ArticleTopicSlug } from "./blog-topics";
 
-export const coverTypes = ["trail", "grid", "bars", "shield", "stack", "connect", "quote", "wash"] as const;
+export const coverTypes = ["trail", "grid", "bars", "shield", "stack", "connect", "quote", "wash", "blank"] as const;
 
 export type CoverType = (typeof coverTypes)[number];
 
@@ -14,6 +14,7 @@ export type BlogPost = {
   publishedAt: string;
   readingTime: string;
   coverType: CoverType;
+  coverImage?: string;
   ctaText: string;
 };
 
