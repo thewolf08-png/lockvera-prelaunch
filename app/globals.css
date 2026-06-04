@@ -912,7 +912,7 @@ body::before {
 .blog-page .card__cover-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
