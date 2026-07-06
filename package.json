@@ -9,9 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
     "next": "latest",
-    "next-mdx-remote": "^6.0.0",
     "react": "latest",
     "react-dom": "latest"
   },

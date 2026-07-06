@@ -25,9 +25,9 @@ export default function Home() {
 
           <p className="claim">Power needs structure — we provide both.</p>
 
-          <Link href="/blog" className="blog-entry-link">
+          <a href="https://blog.lockvera.com/" className="blog-entry-link">
             Zum LockVera Blog →
-          </Link>
+          </a>
 
           <div className="status-badge">
             <span className="status-dot" />
