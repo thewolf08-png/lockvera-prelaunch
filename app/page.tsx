@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "LockVera",
-  description: "LockVera – Power needs structure. Coming 2026.",
+  description: "LockVera – Power needs structure. Coming soon.",
   robots: { index: false, follow: false },
 };
 
@@ -31,7 +31,7 @@ export default function Home() {
 
           <div className="status-badge">
             <span className="status-dot" />
-            <span className="status-text">Coming 2026</span>
+            <span className="status-text">Coming soon</span>
           </div>
         </div>
       </main>

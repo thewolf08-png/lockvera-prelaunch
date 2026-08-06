@@ -22,9 +22,8 @@ export default function Page() {
             <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
             <p>
                 David Wolf<br />
-                Kronenstraße 42<br />
-                Haus A, 4. OG<br />
-                70173 Stuttgart<br />
+                Ernst-Ehret-Straße 9<br />
+                77948 Friesenheim<br />
                 Deutschland
             </p>
             <p>E-Mail: <a href="mailto:contact@lockvera.com">contact@lockvera.com</a></p>

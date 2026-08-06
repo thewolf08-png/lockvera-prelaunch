@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "LockVera",
-  description: "LockVera – Power needs structure. Coming 2026.",
+  description: "LockVera – Power needs structure. Coming soon.",
   manifest: "/manifest.json",
   icons: {
     icon: [

@@ -20,9 +20,8 @@ export default function Page() {
             <h2>Angaben gemäß § 5 DDG</h2>
             <p>
                 David Wolf<br /><br />
-                Kronenstraße 42<br />
-                Haus A, 4. OG<br />
-                70173 Stuttgart<br />
+                Ernst-Ehret-Straße 9<br />
+                77948 Friesenheim<br />
                 Deutschland
             </p>
         </div>
